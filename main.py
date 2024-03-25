@@ -2,7 +2,7 @@ import sys
 import re
 
 def generate_index(markdown_text):
-    index = "## Indice\n\n"
+    index = "# Indice\n\n"
     headers = re.findall(r'(?m)^#+\s+(.*)', markdown_text)
     
     for header in headers:
