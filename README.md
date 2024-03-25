@@ -4,19 +4,15 @@ This project automatically updates the index of a markdown file.
 
 ## Installation
 
-1. Clone the repository.
-2. Install the required dependencies.
+1. Clone the repository using the command `git clone https://github.com/nicolariccimaccarini/UpdateIndexMarkdown`.
 
 ## Usage
 
-1. Run the script `update_index.py`.
+1. Run the script `python3 update_index.py <path_file>` (if you are in the same folder of the markdown file you want to update only write the file name (and `.md`) in the place of `<path_file>`)
 2. The script will scan the directory for markdown files.
 3. It will generate an index based on the contents of the files.
 4. The index will be updated in the markdown file.
 
-## Contributing
-
-Contributions are welcome! Please follow the guidelines in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 ## License
 
