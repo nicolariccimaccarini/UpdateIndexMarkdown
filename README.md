@@ -1,6 +1,6 @@
 # UpdateIndexMarkdown
 
-This project automatically updates the index of a markdown file.
+This project updates the index of a markdown file.
 
 ## Installation
 
