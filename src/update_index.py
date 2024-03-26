@@ -9,7 +9,7 @@ def generate_index(markdown_text):
         level = header.count('#')
         title = header.strip('#').strip()
         anchor = title.lower().replace(' ', '-')
-        index += f"{'  ' * (level - 1)}- [{' '.join(title.splitlines())}](#{anchor})\n"
+        index += f"{'  ' * (level - 1)}- [[#{anchor}]] {title}\n"
     
     return index
 
