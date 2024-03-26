@@ -9,7 +9,7 @@ def generate_index(markdown_text):
         level = header.count('#')
         title = header.strip('#').strip()
         anchor = title.lower()
-        index += f"{'  ' * (level - 1)}- [[#{anchor}]] {title}\n"
+        index += f"{'  ' * (level - 1)}1. [[#{anchor}]]\n"
     
     return index
 
@@ -20,16 +20,8 @@ def update_index_in_file(file_path):
 
         index = generate_index(markdown_text)
 
-        # Check if index already exists in the markdown text
-        if "# Index" in markdown_text:
-            # Update the existing index
-            updated_markdown_text = re.sub(r"(?s)# Index.*?(?=#|$)", index, markdown_text)
-        else:
-            # Append the index to the markdown text
-            updated_markdown_text = index + '\n' + markdown_text
-
         with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(updated_markdown_text)
+            file.write(index + '\n' + markdown_text)
 
         print("Index updated successfully.")
 
