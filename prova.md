@@ -1,21 +1,4 @@
-# Index
 
-- [[#index]] Index
-- [[#paragrafo-1]] Paragrafo 1
-- [[#sottoparagrafo-1]] Sottoparagrafo 1
-- [[#sottoparagrafo-2]] Sottoparagrafo 2
-- [[#paragrafo-2]] Paragrafo 2
-- [[#sottoparagrafo-2]] Sottoparagrafo 2
-- [[#sottoparagrafo-3]] Sottoparagrafo 3
-
-# Index
-
-- [[#paragrafo-1]]
-- [[#sottoparagrafo-1]]
-- [[#sottoparagrafo-2]]
-- [[#paragrafo-2]]
-- [[#sottoparagrafo-2]]
-- [[#sottoparagrafo-3]]
 
 # Paragrafo 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquam ut dui quis tincidunt. Ut iaculis orci justo, sed finibus ex iaculis ac. Nam quis efficitur erat, in aliquet velit. Maecenas mollis lacus nisi, vitae finibus ligula auctor vitae. Maecenas nec tincidunt sem. Nulla iaculis justo est, a sollicitudin ante fringilla eu. Vivamus efficitur neque a nunc lobortis, sit amet placerat odio maximus. Quisque ligula enim, faucibus ut orci sed, faucibus ultrices nisi.
