@@ -3,14 +3,28 @@ import re
 
 def generate_index(markdown_text):
     index = "# Index\n\n"
-    headers = re.findall(r'(?m)^#+\s+(.*)', markdown_text)
-    
+    headers = re.findall(r'(?m)^(#+)\s+(.*)', markdown_text)
+
+    paragraphs_counter = 1
+    sub_paragraphs_in_paragraph = {}    # Stores the number of subsections for each paragraph.
+
     for header in headers:
-        level = header.count('#')
-        title = header.strip('#').strip()
+        level = len(header[0])          # header level
+        title = header[1].strip()       # header title
         anchor = title.lower()
-        index += f"{'  ' * (level - 1)}1. [[#{anchor}]]\n"
-    
+
+        if level == 1:
+            index += f"{paragraphs_counter}. [[#{anchor}]]\n"
+            sub_paragraphs_in_paragraph[paragraphs_counter] = 1
+            paragraphs_counter += 1
+        else:
+            sub_paragraphs_counter = sub_paragraphs_in_paragraph.get(paragraphs_counter, 1)
+
+            indent_level = '    ' * (level - 1)
+            index += f"{indent_level}{sub_paragraphs_counter}. [[#{anchor}]]\n" 
+            
+            sub_paragraphs_in_paragraph[paragraphs_counter] = sub_paragraphs_counter + 1
+
     return index
 
 def update_index_in_file(file_path):
@@ -28,7 +42,7 @@ def update_index_in_file(file_path):
     except FileNotFoundError:
         print("The specified file was not found.")
     except Exception as e:
-        print(f"An error occurred while updating the index: {e}")
+        print(f"An error occurred while updating the index: {str(e)}")  
 
 def main():
     if len(sys.argv) != 2:
