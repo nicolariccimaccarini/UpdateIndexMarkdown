@@ -1,16 +1,3 @@
-# Index
-
-1. [[#paragrafo 1]]
-    1. [[#sottoparagrafo 1]]
-        2. [[#sottoparagrafo 2]]
-        3. [[#sottoparagrafo 90]]
-    4. [[#sottoparagrafo 23]]
-2. [[#paragrafo 2]]
-    1. [[#sottoparagrafo 4]]
-        2. [[#sottoparagrafo 3]]
-        3. [[#sottoparagrafo 94]]
-    4. [[#sottoparagrafo 24]]
-
 
 
 # Paragrafo 1

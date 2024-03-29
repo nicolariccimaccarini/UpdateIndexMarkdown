@@ -5,25 +5,18 @@ def generate_index(markdown_text):
     index = "# Index\n\n"
     headers = re.findall(r'(?m)^(#+)\s+(.*)', markdown_text)
 
-    paragraphs_counter = 1
-    sub_paragraphs_in_paragraph = {}    # Stores the number of subsections for each paragraph.
+    counters = [0] * 6                                      # One counter for each header level (1-6)
 
     for header in headers:
-        level = len(header[0])          # header level
-        title = header[1].strip()       # header title
+        level = len(header[0])                              # header level
+        title = header[1].strip()                           # header title
         anchor = title.lower()
 
-        if level == 1:
-            index += f"{paragraphs_counter}. [[#{anchor}]]\n"
-            sub_paragraphs_in_paragraph[paragraphs_counter] = 1
-            paragraphs_counter += 1
-        else:
-            sub_paragraphs_counter = sub_paragraphs_in_paragraph.get(paragraphs_counter, 1)
+        counters[level - 1] += 1                            # Increment the counter for the current level
+        counters[level:] = [0] * len(counters[level:])      # Reset the counters for the lower levels
 
-            indent_level = '    ' * (level - 1)
-            index += f"{indent_level}{sub_paragraphs_counter}. [[#{anchor}]]\n" 
-            
-            sub_paragraphs_in_paragraph[paragraphs_counter] = sub_paragraphs_counter + 1
+        indent_level = '    ' * (level - 1)
+        index += f"{indent_level}{'.'.join(map(str, counters[:level]))}. [[#{anchor}]]\n"
 
     return index
 
