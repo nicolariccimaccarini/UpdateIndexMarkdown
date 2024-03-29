@@ -31,7 +31,9 @@ def update_index_in_file(file_path):
 
         with open(file_path, 'w', encoding='utf-8') as file:
             if has_index:
-                markdown_text = markdown_text.split('\n', 1)[1]  # remove the existing index
+                # remove the existing index
+                markdown_lines = markdown_text.split('\n')
+                markdown_text = '\n'.join(markdown_lines[markdown_text.count('[TOC]')+1:])
 
             file.write(index + '\n\n' + markdown_text)
 
