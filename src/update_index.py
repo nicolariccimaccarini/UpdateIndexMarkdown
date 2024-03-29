@@ -5,15 +5,15 @@ def generate_index(markdown_text):
     index = "# Index\n\n"
     headers = re.findall(r'(?m)^(#+)\s+(.*)', markdown_text)
 
-    counters = [0] * 6                                      # One counter for each header level (1-6)
+    counters = [0] * 6                                          # One counter for each header level (1-6)
 
     for header in headers:
-        level = len(header[0])                              # header level
-        title = header[1].strip()                           # header title
+        level = len(header[0])                                  # header level
+        title = header[1].strip()                               # header title
         anchor = title.lower()
 
-        counters[level - 1] += 1                            # Increment the counter for the current level
-        counters[level:] = [0] * len(counters[level:])      # Reset the counters for the lower levels
+        counters[level - 1] += 1                                # Increment the counter for the current level
+        counters[level:] = [0] * len(counters[level:])          # Reset the counters for the lower levels
 
         indent_level = '    ' * (level - 1)
         index += f"{indent_level}{'.'.join(map(str, counters[:level]))}. [[#{anchor}]]\n"
@@ -25,10 +25,15 @@ def update_index_in_file(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             markdown_text = file.read()
 
+        has_index = markdown_text.startswith("[TOC]\n")         # check if the index already exists
+
         index = generate_index(markdown_text)
 
         with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(index + '\n' + markdown_text)
+            if has_index:
+                markdown_text = markdown_text.split('\n', 1)[1]  # remove the existing index
+
+            file.write(index + '\n\n' + markdown_text)
 
         print("Index updated successfully.")
 
